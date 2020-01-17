@@ -30,7 +30,7 @@ services:
         traefik.http.services.bubble-face-bot.loadbalancer.server.port: ${WEBHOOK_PORT}
 
         traefik.http.routers.bubble-face-bot-secure.entrypoints: "https"
-        traefik.http.routers.bubble-face-bot-secure.rule: "Host(${WEBHOOK_URL}) && PathPrefix(`/bots`)"
+        traefik.http.routers.bubble-face-bot-secure.rule: "Host(`${WEBHOOK_URL}`) && PathPrefix(`/bots`)"
         traefik.http.routers.bubble-face-bot-secure.tls: "true"
         traefik.http.routers.bubble-face-bot-secure.service: "bubble-face-bot"
 
