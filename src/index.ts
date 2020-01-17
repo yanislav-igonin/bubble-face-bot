@@ -27,23 +27,28 @@ bot.on('photo', async (ctx: ContextMessageUpdate): Promise<void> => {
     // @ts-ignore
     const { photo } = ctx.update.message;
     const fileId = photo[photo.length - 1].file_id;
-    // @ts-ignore // 'getFile' does not exist, bad typings
-    // const fileInfo = await telegram.getFile(fileId);
-    // console.log('DEBUG: fileInfo', fileInfo);
     const fileLink = await telegram.getFileLink(fileId);
-    const { data: imageStream } = await axios.get(fileLink, {
+
+    const originalImageResponse = await axios({
+      method: 'GET',
       responseType: 'stream',
+      url: fileLink,
     });
-    console.log('DEBUG: imageStream', imageStream);
+
     const formData = new FormData();
-    formData.append('image', imageStream);
-    const { data: processedImageStream } = await axios.post(
-      'https://face.bubble.ru/_api/face',
-      formData,
-      { responseType: 'stream' },
-    );
-    console.log('DEBUG: processedImageStream', processedImageStream);
-    ctx.replyWithPhoto(processedImageStream);
+    formData.append('image', originalImageResponse.data);
+
+    const headers = formData.getHeaders();
+
+    const processedImageResponse = await axios({
+      method: 'post',
+      url: 'https://face.bubble.ru/_api/face',
+      responseType: 'stream',
+      headers,
+      data: formData,
+    });
+
+    ctx.replyWithPhoto({ source: processedImageResponse.data });
   } catch (err) {
     logger.error(err);
   }
