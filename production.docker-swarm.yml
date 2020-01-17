@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  app:
+    image: registry.gitlab.com/yanislav-igonin/bubble-face-bot:latest
+    networks:
+      - web
+    environment: 
+      - NODE_ENV=production
+      - BOT_TOKEN=${BOT_TOKEN}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - WEBHOOK_PORT=${WEBHOOK_PORT}
+      - IS_WEBHOOK_DISABLED=false
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 3s
+        failure_action: rollback
+        order: stop-first
+      restart_policy:
+        condition: on-failure
+        window: 10s
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        traefik.enable: "true"
+        traefik.docker.network: "web"
+
+        traefik.http.services.bubble-face-bot.loadbalancer.server.port: ${WEBHOOK_PORT}
+
+        traefik.http.routers.bubble-face-bot-secure.entrypoints: "https"
+        traefik.http.routers.bubble-face-bot-secure.rule: "Host(${WEBHOOK_URL}) && PathPrefix(`/bots`)"
+        traefik.http.routers.bubble-face-bot-secure.tls: "true"
+        traefik.http.routers.bubble-face-bot-secure.service: "bubble-face-bot"
+
+networks:
+  web:
+    driver: overlay
+    external: true
