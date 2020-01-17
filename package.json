@@ -15,6 +15,7 @@
   "dependencies": {
     "@types/pino": "^5.8.8",
     "axios": "^0.19.1",
+    "form-data": "^3.0.0",
     "ngrok": "^3.2.5",
     "pino": "^5.12.6",
     "pino-pretty": "^3.1.0",
