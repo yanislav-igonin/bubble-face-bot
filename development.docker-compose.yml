@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: development.Dockerfile
+    environment: 
+      - NODE_ENV=development
+      - BOT_TOKEN=${BOT_TOKEN}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - WEBHOOK_PORT=${WEBHOOK_PORT}
+      - IS_WEBHOOK_DISABLED=false
+    volumes:
+      - ./src:/usr/src/app/src
