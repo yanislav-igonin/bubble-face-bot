@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   app:
-    image: registry.gitlab.com/yanislav-igonin/bubble-face-bot:latest
+    image: registry.gitlab.com/yanislav-igonin/nbsp-bot:latest
     networks:
       - web
     environment: 
@@ -27,12 +27,12 @@ services:
         traefik.enable: "true"
         traefik.docker.network: "web"
 
-        traefik.http.services.bubble-face-bot.loadbalancer.server.port: ${WEBHOOK_PORT}
+        traefik.http.services.nbsp-bot.loadbalancer.server.port: ${WEBHOOK_PORT}
 
-        traefik.http.routers.bubble-face-bot-secure.entrypoints: "https"
-        traefik.http.routers.bubble-face-bot-secure.rule: "Host(`${WEBHOOK_URL}`) && PathPrefix(`/bots`)"
-        traefik.http.routers.bubble-face-bot-secure.tls: "true"
-        traefik.http.routers.bubble-face-bot-secure.service: "bubble-face-bot"
+        traefik.http.routers.nbsp-bot-secure.entrypoints: "https"
+        traefik.http.routers.nbsp-bot-secure.rule: "Host(`${WEBHOOK_URL}`) && PathPrefix(`/bots`)"
+        traefik.http.routers.nbsp-bot-secure.tls: "true"
+        traefik.http.routers.nbsp-bot-secure.service: "nbsp-bot"
 
 networks:
   web:
