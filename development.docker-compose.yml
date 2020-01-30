@@ -12,4 +12,4 @@ services:
       - WEBHOOK_PATH=${WEBHOOK_PATH}
       - IS_WEBHOOK_DISABLED=true
     volumes:
-      - ./src:/usr/src/app/src
+      - ./src:/app/src
