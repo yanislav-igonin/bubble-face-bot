@@ -9,6 +9,7 @@ services:
       - BOT_TOKEN=${BOT_TOKEN}
       - WEBHOOK_URL=${WEBHOOK_URL}
       - WEBHOOK_PORT=${WEBHOOK_PORT}
+      - WEBHOOK_PATH=${WEBHOOK_PATH}
       - IS_WEBHOOK_DISABLED=true
     volumes:
       - ./src:/usr/src/app/src

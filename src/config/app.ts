@@ -4,6 +4,7 @@ interface AppConfig {
   release: string;
   webhookHost: string;
   webhookPort: number;
+  webhookPath: string;
   isWebhookDisabled: boolean;
 }
 
@@ -15,6 +16,7 @@ const app: AppConfig = {
   webhookPort: process.env.WEBHOOK_PORT
     ? parseInt(process.env.WEBHOOK_PORT, 10)
     : 8000,
+  webhookPath: process.env.WEBHOOK_PATH || '',
   isWebhookDisabled: process.env.IS_WEBHOOK_DISABLED === 'true',
 };
 

@@ -1,6 +1,5 @@
 import Telegraf, { ContextMessageUpdate, Telegram } from 'telegraf';
 import * as ngrok from 'ngrok';
-import * as crypto from 'crypto';
 import axios from 'axios';
 import FormData from 'form-data';
 
@@ -66,12 +65,10 @@ const launch = async (): Promise<void> => {
       host = app.webhookHost;
     }
 
-    const hookPath = `/bots/telegram/${crypto.randomBytes(32).toString('hex')}`;
-
     await bot.launch({
       webhook: {
         domain: host,
-        hookPath,
+        hookPath: app.webhookPath,
         port: app.webhookPort,
       },
     });
