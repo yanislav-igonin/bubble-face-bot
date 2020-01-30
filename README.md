@@ -1,2 +1,2 @@
-# typescript-telegram-bot-template
-This is template project for my telegram bots written in typescript.
+# bubble-face-bot
+This is telegram bot written in typescript that uses [Bubble Face](https://face.bubble.ru/) API.
