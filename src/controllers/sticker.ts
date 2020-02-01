@@ -5,10 +5,15 @@ import { logger, telegram } from '../modules';
 
 export default async (ctx: ContextMessageUpdate): Promise<void> => {
   try {
-    // @ts-ignore Photo is exist for this controller
-    const { photo } = ctx.update.message;
-    const fileId = photo[photo.length - 1].file_id;
+    // @ts-ignore Sticker is exist for this controller
+    const { sticker } = ctx.update.message;
+    const fileId = sticker.file_id;
     const fileLink = await telegram.getFileLink(fileId);
+
+    if (sticker.is_animated) {
+      await ctx.reply('Извини, анимированные стикеры не поддерживаются');
+      return;
+    }
 
     const originalImageResponse = await axios({
       method: 'GET',
@@ -29,7 +34,7 @@ export default async (ctx: ContextMessageUpdate): Promise<void> => {
       data: formData,
     });
 
-    await ctx.replyWithPhoto({ source: processedImageResponse.data });
+    await ctx.replyWithSticker({ source: processedImageResponse.data });
   } catch (err) {
     logger.error(err);
   }
