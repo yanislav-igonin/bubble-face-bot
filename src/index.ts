@@ -3,7 +3,7 @@ import * as ngrok from 'ngrok';
 
 import { app } from './config';
 import { logger } from './modules';
-import { start, photo } from './controllers';
+import { start, photo, sticker } from './controllers';
 
 const bot = new Telegraf(app.botToken);
 
@@ -13,6 +13,7 @@ bot.catch((err: Error): void => {
 
 bot.start(start);
 bot.on('photo', photo);
+bot.on('sticker', sticker);
 
 const launch = async (): Promise<void> => {
   logger.info('release -', app.release);
