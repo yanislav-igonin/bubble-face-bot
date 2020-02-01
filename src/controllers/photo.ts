@@ -1,10 +1,7 @@
-import { Telegram, ContextMessageUpdate } from 'telegraf';
+import { ContextMessageUpdate } from 'telegraf';
 import axios from 'axios';
 import FormData from 'form-data';
-import { app } from '../config';
-import { logger } from '../modules';
-
-const telegram = new Telegram(app.botToken);
+import { logger, telegram } from '../modules';
 
 export default async (ctx: ContextMessageUpdate): Promise<void> => {
   try {
