@@ -1,55 +1,18 @@
-import Telegraf, { ContextMessageUpdate, Telegram } from 'telegraf';
+import Telegraf from 'telegraf';
 import * as ngrok from 'ngrok';
-import axios from 'axios';
-import FormData from 'form-data';
 
 import { app } from './config';
 import { logger } from './modules';
+import { start, photo } from './controllers';
 
 const bot = new Telegraf(app.botToken);
-const telegram = new Telegram(app.botToken);
 
 bot.catch((err: Error): void => {
   logger.error(`ERROR: ${err}\n`);
 });
 
-bot.start((ctx: ContextMessageUpdate): void => {
-  ctx.reply(
-    'Кидай фотку и балдей',
-  );
-});
-
-bot.on('photo', async (ctx: ContextMessageUpdate): Promise<void> => {
-  try {
-    // @ts-ignore
-    const { photo } = ctx.update.message;
-    const fileId = photo[photo.length - 1].file_id;
-    const fileLink = await telegram.getFileLink(fileId);
-
-    const originalImageResponse = await axios({
-      method: 'GET',
-      responseType: 'stream',
-      url: fileLink,
-    });
-
-    const formData = new FormData();
-    formData.append('image', originalImageResponse.data);
-
-    const headers = formData.getHeaders();
-
-    const processedImageResponse = await axios({
-      method: 'post',
-      url: 'https://face.bubble.ru/_api/face',
-      responseType: 'stream',
-      headers,
-      data: formData,
-    });
-
-    ctx.replyWithPhoto({ source: processedImageResponse.data });
-  } catch (err) {
-    logger.error(err);
-  }
-});
+bot.start(start);
+bot.on('photo', photo);
 
 const launch = async (): Promise<void> => {
   logger.info('release -', app.release);
