@@ -11,6 +11,8 @@ services:
       - WEBHOOK_PORT=${WEBHOOK_PORT}
       - WEBHOOK_PATH=${WEBHOOK_PATH}
       - IS_WEBHOOK_DISABLED=false
+      - IMAGINARY_HOST=${IMAGINARY_HOST}
+      - IMAGINARY_API_KEY=${IMAGINARY_API_KEY}
     deploy:
       replicas: 1
       update_config:
