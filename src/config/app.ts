@@ -6,6 +6,8 @@ interface AppConfig {
   webhookPort: number;
   webhookPath: string;
   isWebhookDisabled: boolean;
+  imaginaryHost: string;
+  imaginaryApiKey: string;
 }
 
 const app: AppConfig = {
@@ -18,6 +20,8 @@ const app: AppConfig = {
     : 8000,
   webhookPath: process.env.WEBHOOK_PATH || '',
   isWebhookDisabled: process.env.IS_WEBHOOK_DISABLED === 'true',
+  imaginaryHost: process.env.IMAGINARY_HOST || '',
+  imaginaryApiKey: process.env.IMAGINARY_API_KEY || '',
 };
 
 export default app;
