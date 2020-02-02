@@ -11,5 +11,13 @@ services:
       - WEBHOOK_PORT=${WEBHOOK_PORT}
       - WEBHOOK_PATH=${WEBHOOK_PATH}
       - IS_WEBHOOK_DISABLED=true
+      - IMAGINARY_HOST=imaginary
+      - IMAGINARY_API_KEY=imaginary_secret_api_key
     volumes:
       - ./src:/app/src
+
+  imaginary:
+    image: h2non/imaginary:latest
+    environment:
+       PORT: 80
+    command: -key imaginary_secret_api_key
