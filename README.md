@@ -8,7 +8,7 @@ This is telegram bot written in typescript that uses [Bubble Face](https://face.
 
 Didn't find any telegram bot with this functionality, so I decided to make my own.
 
-## Deployed instance
+## Deployed instance :outbox_tray:
 
 [Bubble Face Bot](https://t.me/bubble_face_bot)
 
