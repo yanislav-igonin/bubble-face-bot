@@ -28,6 +28,8 @@ OR IF DOCKERWAY PREFERED
 > BOT_TOKEN=... docker-compose -f development.docker-compose.yml up --build
 ```
 
+Development environment uses `nodemon` for auto restart on code changes.
+
 ## Bugs :bug:
 
 This project is getting upgrades in my free time.  
