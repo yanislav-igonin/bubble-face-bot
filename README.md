@@ -30,6 +30,8 @@ OR IF DOCKERWAY PREFERED
 
 Development environment uses `nodemon` for auto restart on code changes.
 
+Bot uses [Imaginary](https://github.com/h2non/imaginary) to convert stickers from `webp` to `png` to process it on [Bubble Face](https://face.bubble.ru/) API.
+
 ## Bugs :bug:
 
 This project is getting upgrades in my free time.  
