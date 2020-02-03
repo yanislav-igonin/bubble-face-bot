@@ -1,4 +1,4 @@
-# bubble-face-bot
+# bubble-face-bot :robot:
 
 ![License](https://img.shields.io/github/license/yanislav-igonin/bubble-face-bot.svg) ![Issues](https://img.shields.io/github/issues/yanislav-igonin/bubble-face-bot.svg) ![forks](https://img.shields.io/github/forks/yanislav-igonin/bubble-face-bot) ![stars](https://img.shields.io/github/stars/yanislav-igonin/bubble-face-bot) ![size](https://img.shields.io/github/repo-size/yanislav-igonin/bubble-face-bot)
 
