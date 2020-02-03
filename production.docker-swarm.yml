@@ -7,7 +7,7 @@ services:
     environment: 
       - NODE_ENV=production
       - BOT_TOKEN=${BOT_TOKEN}
-      - WEBHOOK_URL=${WEBHOOK_URL}
+      - WEBHOOK_HOST=${WEBHOOK_HOST}
       - WEBHOOK_PORT=${WEBHOOK_PORT}
       - WEBHOOK_PATH=${WEBHOOK_PATH}
       - IS_WEBHOOK_DISABLED=false

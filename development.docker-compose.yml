@@ -7,12 +7,13 @@ services:
     environment: 
       - NODE_ENV=development
       - BOT_TOKEN=${BOT_TOKEN}
-      - WEBHOOK_URL=${WEBHOOK_URL}
+      - WEBHOOK_HOST=${WEBHOOK_HOST}
       - WEBHOOK_PORT=${WEBHOOK_PORT}
       - WEBHOOK_PATH=${WEBHOOK_PATH}
-      - IS_WEBHOOK_DISABLED=true
+      - IS_WEBHOOK_DISABLED=false
       - IMAGINARY_HOST=imaginary
       - IMAGINARY_API_KEY=imaginary_secret_api_key
+      - DEBUG=*
     volumes:
       - ./src:/app/src
 
