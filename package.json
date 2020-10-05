@@ -1,5 +1,5 @@
 {
-  "name": "typescript-telegram-bot-template",
+  "name": "bubble-face-bot",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -10,7 +10,7 @@
     "lint": "eslint --ext .ts ./src",
     "lint:fix": "eslint --ext .ts ./src --fix"
   },
-  "author": "Yanislav Igonin <jan.oasis@gmail.com>",
+  "author": "Yanislav Igonin <yanislavdabest@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.1",
