@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   app:
-    image: registry.gitlab.com/yanislav-igonin/bubble-face-bot:latest
+    image: docker.pkg.github.com/yanislav-igonin/bubble-face-bot/bubble-face-bot:latest
     networks:
       - web
     environment: 
