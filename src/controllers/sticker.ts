@@ -7,6 +7,7 @@ import { app } from '../config';
 export default async (ctx: ContextMessageUpdate): Promise<void> => {
   try {
     if (app.imaginaryHost === '') {
+      await ctx.reply('Извини, стикеры не поддерживаются');
       return;
     }
 
