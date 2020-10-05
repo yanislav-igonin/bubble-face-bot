@@ -7,15 +7,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Use Node.js 12
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2-beta
       with:
         node-version: 12.x
     - name: Install dependencies
       run: npm ci
     - name: Lint
-      run: npm run eslint
+      run: npm run lint
 
   build:
     needs: lint
@@ -23,9 +24,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Use Node.js 12
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2-beta
       with:
         node-version: 12.x
     - name: Install dependencies
