@@ -13,7 +13,7 @@
   "author": "Yanislav Igonin <yanislavdabest@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "form-data": "^3.0.0",
     "ngrok": "^3.2.5",
     "pino": "^5.12.6",
